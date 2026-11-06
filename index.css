@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Cairo', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #050000;
+  color: #e5e7eb;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #110000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #7f1d1d;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #991b1b;
+}
+
+/* Selection */
+::selection {
+  background-color: rgba(220, 38, 38, 0.4);
+  color: white;
+}
+
+/* Utility classes */
+@layer components {
+  .btn-primary {
+    @apply bg-red-600 hover:bg-red-500 text-white font-bold px-4 py-2 rounded-lg transition-all duration-300 shadow-[0_0_10px_rgba(220,38,38,0.3)] hover:shadow-[0_0_20px_rgba(220,38,38,0.5)];
+  }
+
+  .btn-secondary {
+    @apply bg-transparent border border-red-900/50 text-red-400 hover:bg-red-900/20 hover:border-red-500 font-bold px-4 py-2 rounded-lg transition-all duration-300;
+  }
+
+  .card {
+    @apply bg-[#110000] border border-red-900/30 rounded-2xl transition-all duration-300 hover:border-red-500/50;
+  }
+
+  .input-field {
+    @apply w-full bg-[#0a0000] border border-red-900/50 text-white rounded-xl py-3 px-4 focus:outline-none focus:border-red-500 focus:shadow-[0_0_15px_rgba(255,0,0,0.2)] transition-all;
+  }
+
+  .glow-text {
+    text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+  }
+}
+
+/* Animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
+}
+
+/* Chat message animation */
+.message-enter {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
